@@ -1,0 +1,76 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Sprites/JapaneseTexture.png" type="Texture" id=1]
+
+[sub_resource type="Shader" id=1]
+
+code = "shader_type canvas_item;
+uniform sampler2D Paper;
+uniform float PaperBleed;
+uniform float Clamp;
+uniform float lod;
+void fragment(){
+	vec2 pix = 1.0/vec2(textureSize(Paper,0));
+	vec4 orig = texture(Paper,SCREEN_UV)-texture(Paper,SCREEN_UV+vec2(0,pix.y));
+	float neg = (orig.r+orig.b+orig.g)/3.0;
+	
+	//vec4 colorout = texture(SCREEN_TEXTURE,SCREEN_UV+neg*(PaperBleed/100.0));
+	vec4 colorout = textureLod ( SCREEN_TEXTURE,SCREEN_UV+neg*(PaperBleed/100.0), lod );
+	if ((colorout.r+colorout.g+colorout.b)/3.0 > Clamp/100.0){
+		colorout = vec4(1.0,1.0,1.0,1.0)
+	}
+	COLOR = colorout*texture(Paper,SCREEN_UV);
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+
+render_priority = 0
+shader = SubResource( 1 )
+shader_param/PaperBleed = 2.428
+shader_param/Clamp = 100.0
+shader_param/lod = 0.587
+shader_param/Paper = ExtResource( 1 )
+_sections_unfolded = [ "shader_param" ]
+
+[node name="Viewport" type="CanvasLayer"]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+
+[node name="Control" type="Control" parent="." index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Shader" type="ColorRect" parent="Control" index="0"]
+
+material = SubResource( 2 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 1, 1, 1, 1 )
+_sections_unfolded = [ "Material", "Visibility" ]
+
+

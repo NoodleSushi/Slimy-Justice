@@ -1,0 +1,1026 @@
+[gd_scene load_steps=51 format=2]
+
+[ext_resource path="res://Scripts/Main.gd" type="Script" id=1]
+[ext_resource path="res://B&W.shader" type="Shader" id=2]
+[ext_resource path="res://Sprites/JapaneseTexture.png" type="Texture" id=3]
+[ext_resource path="res://addons/Switch2D/Switch2D.gd" type="Script" id=4]
+[ext_resource path="res://addons/Switch2D/icon16.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/title_innocent.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/title_guilty.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/title_got_evidence.png" type="Texture" id=8]
+[ext_resource path="res://Audio/Slice1.ogg" type="AudioStream" id=9]
+[ext_resource path="res://Audio/Slice2.ogg" type="AudioStream" id=10]
+[ext_resource path="res://Audio/Snare.wav" type="AudioStream" id=11]
+[ext_resource path="res://Audio/Start.ogg" type="AudioStream" id=12]
+[ext_resource path="res://Invert.shader" type="Shader" id=13]
+[ext_resource path="res://Sprites/mannequin.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/suspect1_blood.png" type="Texture" id=15]
+[ext_resource path="res://Sprites/suspect2_blood.png" type="Texture" id=16]
+[ext_resource path="res://Sprites/suspect3_blood.png" type="Texture" id=17]
+[ext_resource path="res://Sprites/stand.png" type="Texture" id=18]
+[ext_resource path="res://Sprites/attoney_idle.png" type="Texture" id=19]
+[ext_resource path="res://Sprites/attoney_objection.png" type="Texture" id=20]
+[ext_resource path="res://Sprites/attoney_fail.png" type="Texture" id=21]
+[ext_resource path="res://Sprites/table_border.png" type="Texture" id=22]
+[ext_resource path="res://Sprites/BeatDetect1.png" type="Texture" id=23]
+[ext_resource path="res://Sprites/BeatDetect2.png" type="Texture" id=24]
+[ext_resource path="res://Sprites/Marker.png" type="Texture" id=25]
+[ext_resource path="res://Sprites/Happy.png" type="Texture" id=26]
+[ext_resource path="res://Sprites/Sad.png" type="Texture" id=27]
+[ext_resource path="res://Sprites/gavel_base.png" type="Texture" id=28]
+[ext_resource path="res://Sprites/gavel_idle (1).png" type="Texture" id=29]
+[ext_resource path="res://Sprites/gavel_hit (1).png" type="Texture" id=30]
+[ext_resource path="res://Sprites/evidence1.png" type="Texture" id=31]
+[ext_resource path="res://Scripts/Tutorial.gd" type="Script" id=32]
+[ext_resource path="res://courbd.ttf" type="DynamicFontData" id=33]
+
+[sub_resource type="ShaderMaterial" id=2]
+
+render_priority = 0
+shader = ExtResource( 2 )
+shader_param/PaperBleed = 2.428
+shader_param/Clamp = 100.0
+shader_param/lod = 0.587
+shader_param/Paper = ExtResource( 3 )
+_sections_unfolded = [ "shader_param" ]
+
+[sub_resource type="Animation" id=3]
+
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("../JudgeTable/Switch2D:Set_Integer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2 ]
+}
+
+[sub_resource type="Animation" id=4]
+
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("../JudgeTable/Switch2D:Set_Integer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+
+[sub_resource type="Animation" id=5]
+
+resource_name = "Beginning"
+length = 2.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Stand:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 0.502287, 1 ),
+"update": 0,
+"values": [ Vector2( 388, 206.529 ), Vector2( 388, -154.834 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../JudgeTable:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 0.502287, 1 ),
+"update": 0,
+"values": [ Vector2( 388, 366.56 ), Vector2( 388, -154.834 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../Stand/Polygon2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 0.502287, 1 ),
+"update": 0,
+"values": [ Vector2( -58.0621, 238.529 ), Vector2( -58.0621, 0 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+
+length = 0.5
+loop = false
+step = 0.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../JudgeTable:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 0.3, 0.3 ),
+"update": 0,
+"values": [ Vector2( 388, -154.834 ), Vector2( 492.578, -154.834 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Stand:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 0.3, 0.3 ),
+"update": 0,
+"values": [ Vector2( 388, -154.834 ), Vector2( 358.463, -154.834 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../Stand/Attorney:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 0.3 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../evidence1:rect_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 0.3, 0.3 ),
+"update": 0,
+"values": [ Vector2( -386, 376 ), Vector2( 0, 376 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../Stand/Attorney:Set_Integer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 0.3 ),
+"update": 1,
+"values": [ 1 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../evidence1:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 0.3, 0.3 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../Stand/Attorney:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 0.3, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("../Stand/Attorney:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 0.3, 1 ),
+"update": 0,
+"values": [ Vector2( -316.866, 613.384 ), Vector2( -143.816, 613.384 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+
+length = 2.0
+loop = true
+step = 0.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../JudgeTable:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 ),
+"transitions": PoolRealArray( 0.295987, 0.3, 0.3, 0.295987, 0.295987 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 173.243, 0 ), Vector2( 173.243, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../evidence1:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 ),
+"transitions": PoolRealArray( 0.3, 0.3, 0.3, 0.3, 0.3 ),
+"update": 0,
+"values": [ Vector2( -483, 849 ), Vector2( 0, 849 ), Vector2( 0, 849 ), Vector2( -483, 849 ), Vector2( -483, 849 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+
+resource_name = "Putout"
+length = 0.5
+loop = false
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("../JudgeTable:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 0.3, 0.3 ),
+"update": 0,
+"values": [ Vector2( 492.578, -154.834 ), Vector2( 388, -154.834 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Stand:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 0.3, 0.3 ),
+"update": 0,
+"values": [ Vector2( 358.463, -154.834 ), Vector2( 388, -154.834 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../Stand/Attorney:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 0.3 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../evidence1:rect_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 0.3, 0.3 ),
+"update": 0,
+"values": [ Vector2( 0, 376 ), Vector2( -386, 376 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../Stand/Attorney:Set_Integer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 0.3 ),
+"update": 1,
+"values": [ 1 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../evidence1:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 0.3, 0.3 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../Stand/Attorney:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 0.3, 0.3 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("../Stand/Attorney:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 0.3, 1 ),
+"update": 0,
+"values": [ Vector2( -143.816, 613.384 ), Vector2( -316.866, 613.384 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Stand/Blood:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=10]
+
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Stand/Blood:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=11]
+
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Stand/Attorney:Set_Integer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+
+[sub_resource type="Animation" id=12]
+
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Stand/Attorney:Set_Integer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+
+[sub_resource type="Animation" id=13]
+
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Stand/Attorney:Set_Integer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2 ]
+}
+
+[sub_resource type="ShaderMaterial" id=19]
+
+render_priority = 0
+shader = ExtResource( 13 )
+
+[sub_resource type="ShaderMaterial" id=20]
+
+render_priority = 0
+shader = ExtResource( 13 )
+
+[sub_resource type="Animation" id=23]
+
+resource_name = "Run"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("../TutorialText:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
+[sub_resource type="Animation" id=22]
+
+resource_name = "Stop"
+length = 0.01
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("../TutorialText:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+
+[sub_resource type="DynamicFont" id=21]
+
+size = 40
+use_mipmaps = false
+use_filter = false
+extra_spacing_char = -5
+font_data = ExtResource( 33 )
+_sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
+
+[node name="Control" type="Control" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 1 )
+tutorial_mode = true
+count_exists = false
+custom_pattern = null
+enable_custom_pattern = true
+
+[node name="Viewport" type="CanvasLayer" parent="." index="0"]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+
+[node name="Control" type="Control" parent="Viewport" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Shader" type="ColorRect" parent="Viewport/Control" index="0"]
+
+material = SubResource( 2 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 1, 1, 1, 1 )
+_sections_unfolded = [ "Material", "Visibility" ]
+
+[node name="Verdict" type="Node2D" parent="." index="1"]
+
+editor/display_folded = true
+position = Vector2( 300.133, -3.78154 )
+scale = Vector2( 0.7, 0.7 )
+script = ExtResource( 4 )
+_sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_editor_icon": ExtResource( 5 )
+}
+Switch_Type = 1
+Set_Integer = 0
+Set_Float = -1.0
+Set_Name = ""
+Float_Type = 0
+
+[node name="Innocent" type="Sprite" parent="Verdict" index="0"]
+
+visible = false
+position = Vector2( 0.0561829, 168.99 )
+scale = Vector2( 0.187625, 0.187625 )
+texture = ExtResource( 6 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Guilty" type="Sprite" parent="Verdict" index="1"]
+
+visible = false
+position = Vector2( -0.0291934, 168.99 )
+scale = Vector2( 0.35835, 0.35835 )
+texture = ExtResource( 7 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="lawyer" type="Node2D" parent="Verdict" index="2"]
+
+visible = false
+position = Vector2( 950.899, 0 )
+script = ExtResource( 4 )
+_sections_unfolded = [ "Visibility" ]
+Switch_Type = 1
+Set_Integer = 0
+Set_Float = -1.0
+Set_Name = ""
+Float_Type = 0
+
+[node name="State1" type="Sprite" parent="Verdict/lawyer" index="0"]
+
+position = Vector2( 0.0561829, 73.0538 )
+scale = Vector2( 0.175054, 0.175054 )
+texture = ExtResource( 8 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="State2" type="Sprite" parent="Verdict/lawyer" index="1"]
+
+position = Vector2( -0.0292053, 191.901 )
+scale = Vector2( 0.35835, 0.35835 )
+texture = ExtResource( 7 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Animators" type="Node" parent="." index="2"]
+
+[node name="GavelAnim" type="AnimationPlayer" parent="Animators" index="0"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/gavel_hit = SubResource( 3 )
+anims/gavel_idle = SubResource( 4 )
+blend_times = [  ]
+
+[node name="EvidAnim" type="AnimationPlayer" parent="Animators" index="1"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/Beginning = SubResource( 5 )
+anims/Putin = SubResource( 6 )
+"anims/Putin (copy)" = SubResource( 7 )
+anims/Putout = SubResource( 8 )
+blend_times = [  ]
+
+[node name="SlimeAnim" type="AnimationPlayer" parent="Animators" index="2"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/Off = SubResource( 9 )
+anims/On = SubResource( 10 )
+blend_times = [  ]
+
+[node name="LawAnim" type="AnimationPlayer" parent="Animators" index="3"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/Fail = SubResource( 11 )
+anims/Idle = SubResource( 12 )
+anims/Objection = SubResource( 13 )
+blend_times = [  ]
+
+[node name="Audio" type="Node" parent="." index="3"]
+
+editor/display_folded = true
+
+[node name="Slice1" type="AudioStreamPlayer" parent="Audio" index="0"]
+
+stream = ExtResource( 9 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "Music"
+
+[node name="Slice2" type="AudioStreamPlayer" parent="Audio" index="1"]
+
+stream = ExtResource( 10 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "Music"
+
+[node name="Gavel" type="AudioStreamPlayer" parent="Audio" index="2"]
+
+stream = ExtResource( 11 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="Intro" type="AudioStreamPlayer" parent="Audio" index="3"]
+
+stream = ExtResource( 12 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="Stand" type="Node2D" parent="." index="4"]
+
+editor/display_folded = true
+position = Vector2( 388, -154.834 )
+scale = Vector2( 0.7, 0.7 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="mannequin" type="Sprite" parent="Stand" index="0"]
+
+material = SubResource( 19 )
+position = Vector2( 360, 550.932 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 14 )
+_sections_unfolded = [ "Material", "Transform", "Visibility" ]
+
+[node name="Blood" type="Node2D" parent="Stand" index="1"]
+
+editor/display_folded = true
+position = Vector2( 360, 593.687 )
+scale = Vector2( 0.5, 0.5 )
+_sections_unfolded = [ "Visibility" ]
+
+[node name="suspect1_blood" type="Sprite" parent="Stand/Blood" index="0"]
+
+material = SubResource( 20 )
+position = Vector2( 12.557, 77.241 )
+texture = ExtResource( 15 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="suspect2_blood" type="Sprite" parent="Stand/Blood" index="1"]
+
+material = SubResource( 20 )
+position = Vector2( 57.7987, -398.035 )
+texture = ExtResource( 16 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="suspect3_blood" type="Sprite" parent="Stand/Blood" index="2"]
+
+material = SubResource( 20 )
+position = Vector2( 25.5989, 202.463 )
+texture = ExtResource( 17 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="stand" type="Sprite" parent="Stand" index="2"]
+
+position = Vector2( 360, 835.921 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 18 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="Attorney" type="Node2D" parent="Stand" index="3"]
+
+editor/display_folded = true
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( -316.866, 613.384 )
+scale = Vector2( 0.55, 0.55 )
+script = ExtResource( 4 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+__meta__ = {
+"_edit_group_": true,
+"_editor_icon": ExtResource( 5 )
+}
+Switch_Type = 1
+Set_Integer = 1
+Set_Float = -1.0
+Set_Name = ""
+Float_Type = 0
+
+[node name="attoney_idle" type="Sprite" parent="Stand/Attorney" index="0"]
+
+texture = ExtResource( 19 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="attoney_objection" type="Sprite" parent="Stand/Attorney" index="1"]
+
+visible = false
+position = Vector2( 301.053, 5.54785 )
+texture = ExtResource( 20 )
+_sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
+
+[node name="attoney_fail" type="Sprite" parent="Stand/Attorney" index="2"]
+
+visible = false
+position = Vector2( 229.818, 248.415 )
+texture = ExtResource( 21 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Polygon2D" type="Polygon2D" parent="Stand" index="4"]
+
+position = Vector2( -58.0621, 0 )
+scale = Vector2( 1.40693, 1 )
+polygon = PoolVector2Array( 151.473, 1011.7, 568.139, 1011.7, 559.349, 1176.96, 142.682, 1166.41 )
+uv = PoolVector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation_degrees = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="JudgeTable" type="Node2D" parent="." index="5"]
+
+position = Vector2( 388, -154.834 )
+scale = Vector2( 0.7, 0.7 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Polygon2D" type="Polygon2D" parent="JudgeTable" index="0"]
+
+position = Vector2( -554.286, 221.191 )
+scale = Vector2( 1.42857, 1.42857 )
+polygon = PoolVector2Array( 220.772, 552.82, 597.595, 553.484, 594.941, 609.875, 217.455, 621.153 )
+uv = PoolVector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation_degrees = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="table_border" type="Sprite" parent="JudgeTable" index="1"]
+
+position = Vector2( 360, 1011.42 )
+texture = ExtResource( 22 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="table_border2" type="Sprite" parent="JudgeTable" index="2"]
+
+position = Vector2( -664.218, 1424.6 )
+rotation = -0.769153
+texture = ExtResource( 22 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="table_border3" type="Sprite" parent="JudgeTable" index="3"]
+
+position = Vector2( 1377.79, 1424.6 )
+rotation = 0.76969
+texture = ExtResource( 22 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Beat Detector" type="Node2D" parent="JudgeTable" index="4"]
+
+visible = false
+position = Vector2( 182, 1029 )
+scale = Vector2( 1, 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Switch2D" type="Node2D" parent="JudgeTable/Beat Detector" index="0"]
+
+script = ExtResource( 4 )
+__meta__ = {
+"_editor_icon": ExtResource( 5 )
+}
+Switch_Type = 1
+Set_Integer = 0
+Set_Float = -1.0
+Set_Name = ""
+Float_Type = 0
+
+[node name="BeatDetect1" type="Sprite" parent="JudgeTable/Beat Detector/Switch2D" index="0"]
+
+scale = Vector2( 1, 1 )
+texture = ExtResource( 23 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="BeatDetect2" type="Sprite" parent="JudgeTable/Beat Detector/Switch2D" index="1"]
+
+visible = false
+scale = Vector2( 1, 1 )
+texture = ExtResource( 24 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Marker" type="Sprite" parent="JudgeTable/Beat Detector" index="1"]
+
+position = Vector2( -122, 0 )
+texture = ExtResource( 25 )
+centered = false
+offset = Vector2( -12.5, -5 )
+_sections_unfolded = [ "Offset", "Transform" ]
+
+[node name="Feel" type="Node2D" parent="JudgeTable" index="5"]
+
+editor/display_folded = true
+visible = false
+position = Vector2( 372.138, 1000.33 )
+scale = Vector2( 0.5, 0.5 )
+script = ExtResource( 4 )
+_sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_editor_icon": ExtResource( 5 )
+}
+Switch_Type = 1
+Set_Integer = 1
+Set_Float = -1.0
+Set_Name = ""
+Float_Type = 0
+
+[node name="BeatDetect1" type="Sprite" parent="JudgeTable/Feel" index="0"]
+
+scale = Vector2( 1, 1 )
+texture = ExtResource( 26 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="BeatDetect2" type="Sprite" parent="JudgeTable/Feel" index="1"]
+
+visible = false
+scale = Vector2( 1, 1 )
+texture = ExtResource( 27 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="gavel_base" type="Sprite" parent="JudgeTable" index="6"]
+
+position = Vector2( 444.391, 1128.83 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 28 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Switch2D" type="Node2D" parent="JudgeTable" index="7"]
+
+editor/display_folded = true
+position = Vector2( 570.211, 1019.18 )
+scale = Vector2( 0.5, 0.5 )
+script = ExtResource( 4 )
+_sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_editor_icon": ExtResource( 5 )
+}
+Switch_Type = 1
+Set_Integer = 1
+Set_Float = -1.0
+Set_Name = ""
+Float_Type = 0
+
+[node name="gavel_idle" type="Sprite" parent="JudgeTable/Switch2D" index="0"]
+
+position = Vector2( 321.616, -343.91 )
+texture = ExtResource( 29 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="gavel_hit" type="Sprite" parent="JudgeTable/Switch2D" index="1"]
+
+visible = false
+position = Vector2( 243.278, -172.179 )
+rotation = -0.0994838
+texture = ExtResource( 30 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="evidence1" type="TextureRect" parent="." index="6"]
+
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 0.0
+anchor_bottom = 1.0
+margin_left = -386.0
+margin_top = -344.0
+rect_pivot_offset = Vector2( 1, 344 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 31 )
+expand = true
+stretch_mode = 0
+_sections_unfolded = [ "Rect", "Transform", "Visibility" ]
+
+[node name="Tutorial" type="Node" parent="." index="7"]
+
+script = ExtResource( 32 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Tutorial" index="0"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/Run = SubResource( 23 )
+anims/Stop = SubResource( 22 )
+blend_times = [  ]
+
+[node name="TutorialText" type="Label" parent="." index="8"]
+
+anchor_left = 0.0
+anchor_top = 0.5
+anchor_right = 0.0
+anchor_bottom = 0.5
+margin_left = 21.0
+margin_top = -325.0
+margin_right = 507.0
+margin_bottom = -210.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 21 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Placeholder"
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
+
+[connection signal="finished" from="Audio/Intro" to="." method="_on_Intro_finished"]
+
+
