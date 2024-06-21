@@ -11,7 +11,7 @@ A disastrous event called the "Slime Massacre" has filled the court with a ton o
 - Innacurate timings were inevitable due to the limitations of Godot at that time, as the `get_time_since_last_mix()` method from the Audio Server was unavailable.
 
 # Project Setup
-Install the latest Godot Engine 3.0 release
+Install the latest [Godot Engine 3.0](https://godotengine.org/download/archive/3.0.6-stable/) release
 
 # Credits
 - Art assets by ant0nin.
